@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -33,6 +35,22 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Group::class, inversedBy="users")
+     */
+    private $groupsss;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Session::class, inversedBy="users")
+     */
+    private $session;
+
+    public function __construct()
+    {
+        $this->groupsss = new ArrayCollection();
+        $this->session = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,5 +123,53 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Group[]
+     */
+    public function getGroupsss(): Collection
+    {
+        return $this->groupsss;
+    }
+
+    public function addGroupsss(Group $groupsss): self
+    {
+        if (!$this->groupsss->contains($groupsss)) {
+            $this->groupsss[] = $groupsss;
+        }
+
+        return $this;
+    }
+
+    public function removeGroupsss(Group $groupsss): self
+    {
+        $this->groupsss->removeElement($groupsss);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Session[]
+     */
+    public function getSession(): Collection
+    {
+        return $this->session;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->session->contains($session)) {
+            $this->session[] = $session;
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        $this->session->removeElement($session);
+
+        return $this;
     }
 }
