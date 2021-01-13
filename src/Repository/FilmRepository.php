@@ -22,8 +22,8 @@ class FilmRepository extends ServiceEntityRepository
     public function findBySession($sessionName)
     {
         $result = $this->createQueryBuilder('f')
-            ->join('f.session', 's')
-            ->where('session.schedule = :sc')
+            ->join('f.sessions', 's')
+            ->where('s.schedule = :sc')
             ->setParameter('sc', $sessionName)
             ->getQuery()->getResult()
         ;

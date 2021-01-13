@@ -23,7 +23,7 @@ class GroupRepository extends ServiceEntityRepository
     {
         $result = $this->createQueryBuilder('g')
             ->join('g.session', 's')
-            ->where('session.schedule = :sc')
+            ->where('s.schedule = :sc')
             ->setParameter('sc', $sessionName)
             ->getQuery()->getResult();
         return $result;

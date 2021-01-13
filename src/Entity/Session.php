@@ -22,7 +22,7 @@ class Session
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Schedule;
+    private $schedule;
 
     /**
      * @ORM\ManyToMany(targetEntity=Film::class, inversedBy="sessions")
@@ -51,14 +51,14 @@ class Session
         return $this->id;
     }
 
-    public function getSchedule(): ?string
+    public function getschedule(): ?string
     {
-        return $this->Schedule;
+        return $this->schedule;
     }
 
-    public function setSchedule(string $Schedule): self
+    public function setschedule(string $schedule): self
     {
-        $this->Schedule = $Schedule;
+        $this->schedule = $schedule;
 
         return $this;
     }

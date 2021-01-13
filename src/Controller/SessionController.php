@@ -26,7 +26,7 @@ class SessionController extends AbstractController
     {
         $session = $this->getDoctrine()
             ->getRepository(Session::class)
-            ->findOneBy(['Schedule' => $sessionName]);
+            ->findOneBy(['schedule' => $sessionName]);
 
         if (!$session) {
             throw $this->createNotFoundException(
@@ -39,10 +39,10 @@ class SessionController extends AbstractController
         $group  = $this->getDoctrine()
             ->getRepository(Group::class)
             ->findBySession($sessionName);
-        return $this->render('groupes/show.html.twig', [
+        return $this->render('sessions/show.html.twig', [
             'groups' => $group,
             'films' => $film,
-            'sessions' => $session
+            'session' => $session
 
         ]);
 
