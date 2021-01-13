@@ -19,6 +19,16 @@ class GroupRepository extends ServiceEntityRepository
         parent::__construct($registry, Group::class);
     }
 
+    public function findBySession($sessionName)
+    {
+        $result = $this->createQueryBuilder('g')
+            ->join('g.session', 's')
+            ->where('session.schedule = :sc')
+            ->setParameter('sc', $sessionName)
+            ->getQuery()->getResult();
+        return $result;
+    }
+}
     // /**
     //  * @return Group[] Returns an array of Group objects
     //  */
@@ -47,4 +57,3 @@ class GroupRepository extends ServiceEntityRepository
         ;
     }
     */
-}

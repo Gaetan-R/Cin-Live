@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Groupe : {{ group.name }}{% endblock %}
+
+{% block body %}
+    <h1 class="mt-0">{{ group.name }}</h1>
+    <div class="members">
+        <ul>
+            <li><h2>Membres du groupe</h2>
+                {% for user in users %}
+                    <ul>
+                        <li>
+                            {{ user.username }}
+                        </li>
+                    </ul>
+                {% else %}
+                    Aucun membre trouvé.
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+    <div class="sessions">
+        <ul>
+            <li><h2>Séances prévues pour le groupe</h2>
+                {% for session in sessions %}
+                    <ul>
+                        <li>
+                            {{ session.schedule }}
+                        </li>
+                    </ul>
+                {% else %}
+                    Aucune séance de prévue pour le moment.
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+{% endblock %}

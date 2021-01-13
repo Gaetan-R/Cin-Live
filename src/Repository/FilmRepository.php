@@ -19,6 +19,16 @@ class FilmRepository extends ServiceEntityRepository
         parent::__construct($registry, Film::class);
     }
 
+    public function findBySession($sessionName)
+    {
+        $result = $this->createQueryBuilder('f')
+            ->join('f.session', 's')
+            ->where('session.schedule = :sc')
+            ->setParameter('sc', $sessionName)
+            ->getQuery()->getResult()
+        ;
+        return $result;
+    }
     // /**
     //  * @return Film[] Returns an array of Film objects
     //  */

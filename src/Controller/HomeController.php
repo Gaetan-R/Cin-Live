@@ -18,14 +18,5 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig',['user'=>$user]);
     }
 
-    /**
-     * @Route("/success", name="success")
-     *
-     */
-    public function success(): Response
-    {
-        $user=$this->getUser();
-        return $this->render('home/part2/success.html.twig',['user'=>$user]);
-    }
 
 }

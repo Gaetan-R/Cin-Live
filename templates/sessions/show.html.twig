@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} session : {{ session.schedule }}{% endblock %}
+
+{% block body %}
+    <h1 class="mt-0">{{ group.name }}</h1>
+    <div class="session-groups">
+        <ul>
+            <li><h2>Groupes ayant prévu d'assister à cette séance.</h2>
+                {% for group in groups %}
+                    <ul>
+                        <li>
+                            {{ group.name }}
+                        </li>
+                    </ul>
+                {% else %}
+                    <div class="no-session-group">
+                        <p>Aucun groupe n'est sur cette session.</p>
+                    </div>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+    <div class="session-films">
+        <ul>
+            <li><h2>Films prévus pour cette session</h2>
+                {% for film in films %}
+                    <ul>
+                        <li>
+                            {{ film.name }}
+                        </li>
+                    </ul>
+                {% else %}
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+{% endblock %}
