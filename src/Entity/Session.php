@@ -39,6 +39,7 @@ class Session
      */
     private $users;
 
+
     public function __construct()
     {
         $this->film = new ArrayCollection();
@@ -140,4 +141,5 @@ class Session
 
         return $this;
     }
+
 }
