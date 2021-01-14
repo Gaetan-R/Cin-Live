@@ -25,7 +25,7 @@
                 {% for session in sessions %}
                     <ul>
                         <li>
-                            {{ session.schedule }}
+                            <a href="{{ path('session_show', { 'sessionName': session.schedule }) }}">{{ session.schedule }}<i></i></a>
                         </li>
                     </ul>
                 {% else %}

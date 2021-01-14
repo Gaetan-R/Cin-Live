@@ -9,7 +9,7 @@
         <h3>Voici tes groupes</h3>
         <div class="group">
         {% for group in user.groupsss %}
-            <p>{{ group.name }}</p>
+            <a href="{{ path('group_show', { 'groupName': group.name }) }}">{{ group.name }}<i></i></a>
         {% endfor %}
         </div>
     </div>
@@ -17,7 +17,7 @@
         <h3>Voici tes séances</h3>
         <div class="session">
             {% for sess in user.session %}
-                <p>{{ sess.schedule }}</p>
+                <a href="{{ path('session_show', { 'sessionName': sess.schedule }) }}">{{ sess.schedule }}<i></i></a>
             {% endfor %}
         </div>
     </div>
