@@ -51,6 +51,18 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $result;
     }
 
+    public function setUserByGroup($post)
+    {
+        $result = $this->createQueryBuilder('u')
+            ->join('u.groupsss', 'g')
+            ->where('g.name = :gn')
+            ->setParameter('gn', $post)
+            ->getQuery()->getResult()
+        ;
+        return $result;
+    }
+
+
     /*
     public function findOneBySomeField($value): ?User
     {

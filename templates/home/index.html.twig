@@ -3,22 +3,33 @@
 
 {% block body %}
     <div class="username">
-        <h2>Hello {{  user.username }}</h2>
+        <h1>Hello {{  user.username }}</h1>
     </div>
     <div class="groups">
-        <h3>Voici tes groupes</h3>
+        <h2>Voici tes groupes</h2>
         <div class="group">
+            <ul>
         {% for group in user.groupsss %}
+            <li>
             <p>{{ group.name }}</p>
+            </li>
         {% endfor %}
+            </ul>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type='submit' class="btn btn-light" value='Add group'>
+            {{ form_end(form) }}
+
         </div>
     </div>
     <div class="sessions">
-        <h3>Voici tes séances</h3>
+        <h2>Voici tes séances : </h2>
         <div class="session">
+            <ul>
             {% for sess in user.session %}
-                <p>{{ sess.schedule }}</p>
+                <li>{{ sess.schedule }}</li>
             {% endfor %}
+            </ul>
         </div>
     </div>
 
